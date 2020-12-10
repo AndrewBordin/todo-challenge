@@ -41,30 +41,20 @@ import TaskItem from './TaskItem.vue'
   }
 })
 export default class List extends Vue {
-
-  // Props
-
   // Data
+  currentDate = new Date().toLocaleString()
   tasks = [
     {
       id: 0,
       name: 'Task 1',
       isCompleted: false,
+      dateOfCreation: this.currentDate
     },
     {
       id: 1,
       name: 'Task 2',
       isCompleted: false,
-    },
-    {
-      id: 2,
-      name: 'Task 3',
-      isCompleted: true,
-    },
-    {
-      id: 3,
-      name: 'Task 4',
-      isCompleted: true,
+      dateOfCreation: this.currentDate
     },
   ]
 
@@ -93,23 +83,12 @@ export default class List extends Vue {
     }
   }
 
-  // lifecycle hooks
-  created(){
-    console.log("[SampleComponent.vue] created");
-  }
-
   mounted(){
     this.$root.$on('eventing', data => {
-      let dataObj = {id:new Date().getTime(), name: data, isCompleted: false}
+      var d = new Date();
+      let dataObj = {id:new Date().getTime(), name: data, isCompleted: false, dateOfCreation: d.toLocaleString()}
       this.tasks.push(dataObj)
     });
-  }
-  updated(){
-    console.log("[List.vue] updated");
-    console.log("Check the Checkboxes");
-  }
-  destroyed(){
-    console.log("[SampleComponent.vue] destroyed");
   }
 }
 </script>

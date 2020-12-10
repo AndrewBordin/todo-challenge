@@ -17,6 +17,7 @@
         </v-btn>
         <v-list-item-content>
           <v-list-item-title>{{task.name}}</v-list-item-title>
+          <v-list-item-subtitle>Task Created: {{task.dateOfCreation}}</v-list-item-subtitle>
         </v-list-item-content>
         <v-list-item-action>
           <v-checkbox v-model="task.isCompleted"></v-checkbox>
@@ -32,31 +33,12 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component
 export default class TaskItem extends Vue{
   // Props
-  @Prop({ default: "Task Name" }) task: Record<string, boolean>;
-
-  // Data
-
-  // Computed
-
+  @Prop({ default: "Task Name" }) task;
 
   // methods
-  deleteTask(task) {
+  deleteTask(task): void {
     console.log(task.id)
     this.$emit('clicked-show-detail', task);
-  }
-
-  // lifecycle hooks
-  created(){
-    console.log("[SampleComponent.vue] created");
-  }
-  mounted(){
-    console.log("[SampleComponent.vue] mounted");
-  }
-  updated(){
-    console.log("[Task.vue] updated");
-  }
-  destroyed(){
-    console.log("[SampleComponent.vue] destroyed");
   }
 }
 </script>
