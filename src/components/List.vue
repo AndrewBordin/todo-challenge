@@ -48,13 +48,15 @@ export default class List extends Vue {
       id: 0,
       name: 'Task 1',
       isCompleted: false,
-      dateOfCreation: this.currentDate
+      dateOfCreation: this.currentDate,
+      priority: "Low"
     },
     {
       id: 1,
       name: 'Task 2',
       isCompleted: false,
-      dateOfCreation: this.currentDate
+      dateOfCreation: this.currentDate,
+      priority: "Medium"
     },
   ]
 
@@ -85,7 +87,7 @@ export default class List extends Vue {
   mounted(){
     this.$root.$on('addToList', data => {
       var d = new Date();
-      let dataObj = {id:new Date().getTime(), name: data, isCompleted: false, dateOfCreation: d.toLocaleString()}
+      let dataObj = {id:new Date().getTime(), name: data.message, isCompleted: false, dateOfCreation: d.toLocaleString(), priority: data.priority}
       this.tasks.push(dataObj)
     });
   }

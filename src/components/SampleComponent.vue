@@ -6,8 +6,15 @@
           label="Task Description"
         ></v-text-field>
       </v-col>
-      <v-col cols="4">
+      <v-col cols="2">
         <v-btn :disabled="taskMessage == '' " @click="addTaskToList()">Add Task</v-btn>
+      </v-col>
+      <v-col cols="2">
+        <v-select
+          :items="taskPriorities"
+          label="Priority"
+          v-model="selected"
+        ></v-select>
       </v-col>
     </v-row>
   </v-container>
@@ -19,10 +26,14 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component
 export default class SampleComponent extends Vue{
   taskMessage = "";
+  taskPriorities = ["Low", "High"]
+  selected = "Low"
+  
 
   // methods
   addTaskToList(): void{
-    this.$root.$emit('addToList', this.taskMessage);
+    const payload = {message: this.taskMessage, priority: this.selected};
+    this.$root.$emit('addToList', payload);
   }
 }
 </script>

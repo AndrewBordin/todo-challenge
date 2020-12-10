@@ -1,6 +1,9 @@
 <template>
   <v-container>
-    <v-list-item @click="task.isCompleted ? task.isCompleted = false : task.isCompleted = true">
+    <v-list-item 
+    @click="task.isCompleted ? task.isCompleted = false : task.isCompleted = true"
+    :class="task.priority == 'Low' ? 'amber lighten-4' : 'red lighten-4'"
+    >
       <template>
         <v-btn
           elevation="2"
