@@ -83,7 +83,7 @@ export default class List extends Vue {
   }
 
   mounted(){
-    this.$root.$on('eventing', data => {
+    this.$root.$on('addToList', data => {
       var d = new Date();
       let dataObj = {id:new Date().getTime(), name: data, isCompleted: false, dateOfCreation: d.toLocaleString()}
       this.tasks.push(dataObj)

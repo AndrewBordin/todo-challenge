@@ -22,7 +22,7 @@ export default class SampleComponent extends Vue{
 
   // methods
   addTaskToList(): void{
-    this.$root.$emit('eventing', this.taskMessage);
+    this.$root.$emit('addToList', this.taskMessage);
   }
 }
 </script>
