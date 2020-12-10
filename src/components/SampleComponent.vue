@@ -14,35 +14,16 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 
 @Component
 export default class SampleComponent extends Vue{
-  // Props
-
   // Data
   message = "";
-
-  // Computed
-
 
   // methods
   addTaskToList(): void{
     this.$root.$emit('eventing', this.message);
-  }
-
-  // lifecycle hooks
-  created(){
-    console.log("[SampleComponent.vue] created");
-  }
-  mounted(){
-    console.log("[SampleComponent.vue] mounted");
-  }
-  updated(){
-    console.log("[SampleComponent.vue] updated");
-  }
-  destroyed(){
-    console.log("[SampleComponent.vue] destroyed");
   }
 }
 </script>

@@ -32,7 +32,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 import TaskItem from './TaskItem.vue'
 
 @Component({
@@ -93,23 +93,11 @@ export default class List extends Vue {
     }
   }
 
-  // lifecycle hooks
-  created(){
-    console.log("[SampleComponent.vue] created");
-  }
-
   mounted(){
     this.$root.$on('eventing', data => {
       let dataObj = {id:new Date().getTime(), name: data, isCompleted: false}
       this.tasks.push(dataObj)
     });
-  }
-  updated(){
-    console.log("[List.vue] updated");
-    console.log("Check the Checkboxes");
-  }
-  destroyed(){
-    console.log("[SampleComponent.vue] destroyed");
   }
 }
 </script>

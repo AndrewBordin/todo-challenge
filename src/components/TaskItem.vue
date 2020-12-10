@@ -32,31 +32,11 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component
 export default class TaskItem extends Vue{
   // Props
-  @Prop({ default: "Task Name" }) task: Record<string, boolean>;
-
-  // Data
-
-  // Computed
-
+  @Prop({ default: "Task Name" }) task;
 
   // methods
   deleteTask(task) {
-    console.log(task.id)
     this.$emit('clicked-show-detail', task);
-  }
-
-  // lifecycle hooks
-  created(){
-    console.log("[SampleComponent.vue] created");
-  }
-  mounted(){
-    console.log("[SampleComponent.vue] mounted");
-  }
-  updated(){
-    console.log("[Task.vue] updated");
-  }
-  destroyed(){
-    console.log("[SampleComponent.vue] destroyed");
   }
 }
 </script>
