@@ -1,22 +1,13 @@
 <template>
   <v-container>
     <v-row class="text-center">
-      <v-col cols="12" class="mb-6">
-        {{ msg }}
+      <v-col cols="8">
+        <v-text-field v-model="message"
+          label="Task Description"
+        ></v-text-field>
       </v-col>
-      <v-col cols="6" class="mb-6">
-        Counter: {{ count }}
-      </v-col>
-      <v-col cols="6" class="mb-6">
-        <v-btn @click="add">
-          <v-icon>
-            mdi-plus
-          </v-icon>
-          Add
-        </v-btn>
-      </v-col>
-      <v-col cols="6" class="mb-6">
-        NextCount: {{ NextCount }}
+      <v-col cols="4">
+        <v-btn @click="addTaskToList()">Add Task</v-btn>
       </v-col>
     </v-row>
   </v-container>
@@ -28,19 +19,16 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component
 export default class SampleComponent extends Vue{
   // Props
-  @Prop({ default: "Hello World" }) msg: string;
 
   // Data
-  count = 0;
+  message = "";
 
   // Computed
-  get NextCount(): number{
-    return this.count + 1;
-  }
+
 
   // methods
-  add(){
-    this.count++;
+  addTaskToList(): void{
+    this.$root.$emit('eventing', this.message);
   }
 
   // lifecycle hooks
