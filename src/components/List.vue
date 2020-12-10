@@ -21,18 +21,18 @@
       >
       <v-subheader>Completed Tasks</v-subheader>
         <v-list-item-group
-            multiple >
-            <v-for v-for="task in CompletedTasks" :key="task.id">
+            multiple>
+            <span v-for="task in CompletedTasks" :key="task.id">
               <!-- Component Here -->
               <TaskItem :task="task" @clicked-show-detail="clickedShowDetailModal"/>
-            </v-for>
+            </span>
         </v-list-item-group>
       </v-list>
   </v-container>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 import TaskItem from './TaskItem.vue'
 
 @Component({
@@ -74,7 +74,6 @@ export default class List extends Vue {
 
   // methods
   clickedShowDetailModal (value) {
-    console.log("value")
     for(var i = 0; i < this.tasks.length; i++) {
       if(this.tasks[i].id == value.id) {
           this.tasks.splice(i, 1);

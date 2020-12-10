@@ -37,7 +37,6 @@ export default class TaskItem extends Vue{
 
   // methods
   deleteTask(task): void {
-    console.log(task.id)
     this.$emit('clicked-show-detail', task);
   }
 }
