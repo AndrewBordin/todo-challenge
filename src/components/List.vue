@@ -94,7 +94,7 @@ export default class List extends Vue {
   }
 
   mounted(){
-    this.$root.$on('eventing', data => {
+    this.$root.$on('addToList', data => {
       let dataObj = {id:new Date().getTime(), name: data, isCompleted: false}
       this.tasks.push(dataObj)
     });
